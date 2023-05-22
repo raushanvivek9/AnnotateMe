@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.About">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:src="@drawable/about"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="This mobile-based application enables Annotators to label images in an efficient and faster way. As manual labeling is very time consuming, required more human interaction and may result in error or incorrect data labeling, use of annotation tool can resolve the issue which provide various annotation techniques in a single platform "/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:justificationMode="inter_word"
+            android:text="          Ubiquitous nature of this tool increase the normal user participation other than trained annotators. This tool will also enable the collection of more samples as any user with a smartphone can participate and share labeled images on request or voluntarily. It also democratize the annotation and any user with interest and need can participate in the labeling process with or without sharing their images. The further scope is to enable crowdsourcing platforms for labeling both paid and unpaid tasks."/>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

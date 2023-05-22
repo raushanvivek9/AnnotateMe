@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+
+    </group>
+    <item android:title="Dataset">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/public_proj"
+                    android:icon="@drawable/private_share"
+                    android:title="Public Dataset" />
+                <item
+                    android:id="@+id/Shared_Dataset"
+                    android:icon="@drawable/public_icon"
+                    android:title="Shared Project" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Profile">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/profile"
+                    android:title="Profile" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Others">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_about"
+                    android:icon="@drawable/ic_baseline_read_more_24"
+                    android:title="About" />
+                <item
+                    android:id="@+id/nav_help"
+                    android:icon="@drawable/help"
+                    android:title="Help" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
