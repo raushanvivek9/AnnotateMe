@@ -408,7 +408,7 @@ public class Home extends Fragment {
                                                                                     @Override
                                                                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                                                                         if(task.getResult().size() > 0){
-                                                                                            Toast.makeText(getContext(), "You have already shared this Dataset", Toast.LENGTH_SHORT).show();
+                                                                                            Toast.makeText(getContext(), "You have already shared this Project", Toast.LENGTH_SHORT).show();
 
                                                                                         }else{
                                                                                             SharedDataNote sharedDataNote = new SharedDataNote(proj, lbl_type, holder_name, path,currentuser.getUid());
