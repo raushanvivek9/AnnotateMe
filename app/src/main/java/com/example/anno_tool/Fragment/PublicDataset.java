@@ -66,6 +66,14 @@ public class PublicDataset extends Fragment {
         adapter = new PublicDataAdapter(options);
         public_d_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         public_d_recycler.setAdapter(adapter);
+
+        // recycler view position
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                public_d_recycler.smoothScrollToPosition(0);
+            }
+        });
         adapter.setOnItemClickListener(new PublicDataAdapter.OnItemClickListener() {
             @Override
             public void onexport(DocumentSnapshot documentSnapshot, int position) {

@@ -33,7 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -181,18 +181,25 @@ public class User_Login extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         FirebaseUser currentuser=mAuth.getCurrentUser();
                                         String userid=currentuser.getUid();
-                                        //generate device token
-                                        String deviceToken= FirebaseInstanceId.getInstance().getToken();
-                                        db.collection("Users").document(userid).update("deviceToken",deviceToken);
 
-                                        Intent i = new Intent(User_Login.this, MainActivity.class);
-                                        //clear all open activity
-                                        i.addFlags(i.FLAG_ACTIVITY_NEW_TASK | i.FLAG_ACTIVITY_CLEAR_TASK);
+                                        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                                            @Override
+                                            public void onComplete(@androidx.annotation.NonNull Task<String> task) {
+                                                //generate device token
+                                                String deviceToken=task.getResult();
+                                                db.collection("Users").document(userid).update("deviceToken",deviceToken);
 
-                                        startActivity(i);
-                                        progressBar.setVisibility(View.GONE);
-                                        loadingbar.dismiss();
-                                        finish();
+                                                Intent i = new Intent(User_Login.this, MainActivity.class);
+                                                //clear all open activity
+                                                i.addFlags(i.FLAG_ACTIVITY_NEW_TASK | i.FLAG_ACTIVITY_CLEAR_TASK);
+
+                                                startActivity(i);
+                                                progressBar.setVisibility(View.GONE);
+                                                loadingbar.dismiss();
+                                                finish();
+                                            }
+                                        });
+
                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();

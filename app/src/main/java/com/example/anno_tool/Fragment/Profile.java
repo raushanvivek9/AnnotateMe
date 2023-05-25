@@ -33,7 +33,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -100,12 +100,17 @@ public class Profile extends Fragment {
                 public void onClick(View v) {
                     String userid=currentuser.getUid();
                     //generate device token
-                    String deviceToken= FirebaseInstanceId.getInstance().getToken();
-                    db.collection("Users").document(userid).update("deviceToken",deviceToken);
-                    mAuth.getInstance().signOut();
-                    Intent i=new Intent(getActivity(), User_Login.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(i);
+//                    String deviceToken=  FirebaseMessaging.getInstance().getToken().toString();
+                    db.collection("Users").document(userid).update("deviceToken","").addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            mAuth.getInstance().signOut();
+                            Intent i=new Intent(getActivity(), User_Login.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(i);
+                        }
+                    });
+
 
                 }
             });

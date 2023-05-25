@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.anno_tool"
-        minSdk 21
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.2.0'
     implementation 'com.google.firebase:firebase-firestore:24.4.5'
     implementation 'com.google.firebase:firebase-storage:20.1.0'
-    implementation 'com.google.firebase:firebase-messaging:20.1.5'
+    implementation 'com.google.firebase:firebase-messaging:23.0.0'
     //firebaseStore UI
     implementation 'com.firebaseui:firebase-ui-firestore:7.1.1'
 //    implementation 'androidx.annotation:annotation-jvm:1.6.0'
@@ -72,6 +72,12 @@ dependencies {
     implementation 'com.google.mlkit:image-labeling-custom:17.0.1'
     //for swipe background in recyclerview
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.2'
+
+    //retofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
 
 
 

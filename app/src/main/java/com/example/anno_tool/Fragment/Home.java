@@ -27,7 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -42,6 +41,9 @@ import com.example.anno_tool.Model.Create_Proj_Note;
 import com.example.anno_tool.Model.GetLabelNote;
 import com.example.anno_tool.Model.SharedDataNote;
 import com.example.anno_tool.Model.UserDetailNote;
+import com.example.anno_tool.Notification.ApiUtils;
+import com.example.anno_tool.Notification.NotificationDatas;
+import com.example.anno_tool.Notification.NotificationPush;
 import com.example.anno_tool.Project_Work.Export;
 import com.example.anno_tool.R;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -55,9 +57,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -68,6 +68,9 @@ import java.util.Objects;
 import java.util.Random;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Home extends Fragment {
     private View homeView;
@@ -183,6 +186,13 @@ public class Home extends Fragment {
         adapter = new CreateProjAdapter(options);
         project_title.setLayoutManager(new LinearLayoutManager(getContext()));
         project_title.setAdapter(adapter);
+        // recycler view position
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                project_title.smoothScrollToPosition(0);
+            }
+        });
 
         adapter.setOnItemClickListener(new CreateProjAdapter.OnItemClickListener() {
             @Override
@@ -329,12 +339,54 @@ public class Home extends Fragment {
                                 }else {
                                     randomNumber();
                                     if(s_type[0].equals("Public")){
-                                        CollectionReference newcolref=db.collection("Public_Project").document(String.valueOf(random_num)).collection("AnnotatedImages");
+                                        loadingbar.setTitle("Uploading...");
+                                        loadingbar.setMessage("please wait, your dataset is uploading in public repository");
+                                        loadingbar.setCanceledOnTouchOutside(false);
+                                        loadingbar.show();
+//
                                         CollectionReference colcref=db.collection("Public_Project");
-                                        db.document(path).update("proj_share_Type",s_type[0]);
-                                        SharedDataNote sharedDataNote= new SharedDataNote(proj,lbl_type,holder_name,path);
-                                        colcref.add(sharedDataNote);
-                                        Toast.makeText(getContext(), "Dataset uploaded in Public repository", Toast.LENGTH_SHORT).show();
+                                        colcref.whereEqualTo("owner_id",currentuser.getUid())
+                                                .whereEqualTo("project_name",proj)
+                                                .whereEqualTo("label_type",lbl_type).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if(task.getResult().size() > 0){
+                                                    Toast.makeText(getContext(), "You have already shared this Dataset", Toast.LENGTH_SHORT).show();
+                                                    loadingbar.dismiss();
+
+                                                }else{
+                                                    db.document(path).update("proj_share_Type",s_type[0]);
+                                                    SharedDataNote sharedDataNote= new SharedDataNote(proj,lbl_type,holder_name,path,currentuser.getUid());
+                                                    colcref.add(sharedDataNote);
+                                                    db.collection("Users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                                            for(DocumentSnapshot snapshot1: queryDocumentSnapshots){
+                                                                String path=snapshot1.getReference().getPath();
+                                                                db.document(path).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                                    @Override
+                                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                                        String token=documentSnapshot.getString("deviceToken");
+                                                                        sendNotification(token,"New Dataset","New Dataset added in the Public repository");
+                                                                    }
+                                                                });
+                                                            }
+                                                            loadingbar.dismiss();
+                                                            Toast.makeText(getContext(), "Dataset uploaded in Public repository", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+
+                                                }
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+
+
+
                                     }else if(s_type[0].equals("Personal")){
                                         String shareUsername=Share_user.getText().toString();
                                         db.collection("Users").whereEqualTo("username",shareUsername).get()
@@ -348,11 +400,31 @@ public class Home extends Fragment {
                                                                 for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
                                                                     if (documentSnapshot.exists()) {
                                                                         String documentId = documentSnapshot.getId();
+                                                                        String deviceToken=documentSnapshot.getString("deviceToken");
                                                                         CollectionReference colref = db.collection("Users").document(documentId).collection("SharedDataSet");
-                                                                        SharedDataNote sharedDataNote = new SharedDataNote(proj, lbl_type, holder_name, path);
-                                                                        colref.add(sharedDataNote);
-                                                                        sendMail(shareUsername, usrmail, proj, holder_name);
-                                                                        Toast.makeText(getContext(), "Project shared successfully", Toast.LENGTH_SHORT).show();
+                                                                        colref.whereEqualTo("owner_id",currentuser.getUid())
+                                                                                .whereEqualTo("project_name",proj)
+                                                                                .whereEqualTo("label_type",lbl_type).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                                    @Override
+                                                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                                        if(task.getResult().size() > 0){
+                                                                                            Toast.makeText(getContext(), "You have already shared this Dataset", Toast.LENGTH_SHORT).show();
+
+                                                                                        }else{
+                                                                                            SharedDataNote sharedDataNote = new SharedDataNote(proj, lbl_type, holder_name, path,currentuser.getUid());
+                                                                                            colref.add(sharedDataNote);
+                                                                                            sendMail(shareUsername, usrmail, proj, holder_name);
+                                                                                            Toast.makeText(getContext(), "Project Shared Successfully", Toast.LENGTH_SHORT).show();
+                                                                                            sendNotification(deviceToken,"New Shared Project","A new project shared by "+holder_name);
+                                                                                        }
+                                                                                    }
+                                                                                }).addOnFailureListener(new OnFailureListener() {
+                                                                                    @Override
+                                                                                    public void onFailure(@NonNull Exception e) {
+                                                                                        Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                                    }
+                                                                                });
+
                                                                     }
                                                                 }
                                                             }
@@ -387,37 +459,24 @@ public class Home extends Fragment {
 
     }
 
-//    private void share(CollectionReference newcolref, DocumentReference docref, String path, String proj, String lbl_type) {
-//        //Create a write batch
-//        WriteBatch batch=db.batch();
-//        db.document(path).collection("AnnotatedImages").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//            @Override
-//            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                for(DocumentSnapshot documentSnapshot:queryDocumentSnapshots){
-//                    Map<String,Object>data=documentSnapshot.getData();
-//                    DocumentReference documentReference=newcolref.document(documentSnapshot.getId());
-//                    batch.set(documentReference,data);
-//                }
-//                PublicDataNote publicDataNote= new PublicDataNote(proj,lbl_type,holder_name);
-//                docref.set(publicDataNote);
-//
-//                //commit the batch
-//                batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//
-//                    }
-//                });
-//            }
-//        });
-//
-//        Toast.makeText(getActivity(),"Dataset Shared Successfully",Toast.LENGTH_SHORT).show();
-//    }
+    private void sendNotification(String deviceToken, String title, String body) {
+        ApiUtils.getClient().sendNotification(new NotificationPush(new NotificationDatas(title,body),deviceToken))
+                .enqueue(new Callback<NotificationPush>() {
+                    @Override
+                    public void onResponse(Call<NotificationPush> call, Response<NotificationPush> response) {
+                        if(response.isSuccessful()){
+                            Log.d("Share","Success");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<NotificationPush> call, Throwable t) {
+                        Toast.makeText(getContext(),""+t.getMessage(),Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+    }
+
 
     private void create_project() {
         lbl_name.clear();
@@ -646,7 +705,6 @@ public class Home extends Fragment {
         super.onStart();
         try {
             adapter.startListening();
-            project_title.smoothScrollToPosition(project_title.getAdapter().getItemCount());
         } catch (Exception e) {
             Toast.makeText(getActivity(), "Network Error", Toast.LENGTH_SHORT).show();
         }

@@ -62,6 +62,14 @@ public class SharedDataSet extends Fragment {
         adapter = new PrivateShareAdapter(options);
         shareData_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         shareData_recycler.setAdapter(adapter);
+
+        // recycler view position
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                shareData_recycler.smoothScrollToPosition(0);
+            }
+        });
         adapter.setOnItemClickListener(new PrivateShareAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
@@ -156,22 +164,26 @@ public class SharedDataSet extends Fragment {
     }
     @Override
     public void onStart() {
-        super.onStart();
+
         try {
             adapter.startListening();
+//            adapter.notifyItemChanged(0,adapter.getItemCount());
+//            shareData_recycler.smoothScrollToPosition(adapter.getItemCount());
         } catch (Exception e) {
             Toast.makeText(getActivity(), "Network Error:"+e.getMessage(), Toast.LENGTH_LONG).show();
         }
+        super.onStart();
     }
 
     @Override
     public void onStop() {
-        super.onStop();
+
         try {
             adapter.stopListening();
         } catch (Exception e) {
             Toast.makeText(getActivity(), "Network Error", Toast.LENGTH_SHORT).show();
         }
+        super.onStop();
     }
 
 }

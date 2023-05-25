@@ -9,23 +9,26 @@ public class SharedDataNote {
     private String label_type;
     private String ShareBy;
     private String project_path;
+    private String owner_id;
     private @ServerTimestamp Date timestamp;
 
     public SharedDataNote() {
     }
 
-    public SharedDataNote(String project_name, String label_type, String shareBy, String project_path) {
+    public SharedDataNote(String project_name, String label_type, String shareBy, String project_path, String owner_id) {
         this.project_name = project_name;
         this.label_type = label_type;
         ShareBy = shareBy;
         this.project_path = project_path;
+        this.owner_id = owner_id;
     }
 
-    public SharedDataNote(String project_name, String label_type, String shareBy, String project_path, Date timestamp) {
+    public SharedDataNote(String project_name, String label_type, String shareBy, String project_path, String owner_id, Date timestamp) {
         this.project_name = project_name;
         this.label_type = label_type;
         ShareBy = shareBy;
         this.project_path = project_path;
+        this.owner_id = owner_id;
         this.timestamp = timestamp;
     }
 
@@ -67,5 +70,13 @@ public class SharedDataNote {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(String owner_id) {
+        this.owner_id = owner_id;
     }
 }

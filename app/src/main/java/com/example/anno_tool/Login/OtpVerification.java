@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.anno_tool.Email.JavaMailAPI;
@@ -24,7 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Random;
 
@@ -73,18 +74,24 @@ public class OtpVerification extends AppCompatActivity {
                                 public void onComplete(Task<AuthResult> task) {
                                     if(task.isSuccessful()){
                                         String currentuser=mAuth.getCurrentUser().getUid();
-                                        //generate device token
-                                        String deviceToken= FirebaseInstanceId.getInstance().getToken();
-                                        //add user details in firestore
-                                        UserDetailNote note=new UserDetailNote(email,name,currentuser,phone,deviceToken);
-                                        db.collection("Users").document(currentuser).set(note);
-                                        progressDialog.dismiss();
-                                        Intent i=new Intent(OtpVerification.this, MainActivity.class);
-                                        //clear all open activity
-                                        i.addFlags(i.FLAG_ACTIVITY_NEW_TASK | i.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(i);
-                                        finish();
-                                        Toast.makeText(getApplicationContext(),"user registered successful"+deviceToken,Toast.LENGTH_LONG).show();
+                                        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<String> task) {
+                                                //generate device token
+                                                String deviceToken= task.getResult();
+                                                //add user details in firestore
+                                                UserDetailNote note=new UserDetailNote(email,name,currentuser,phone,deviceToken);
+                                                db.collection("Users").document(currentuser).set(note);
+                                                progressDialog.dismiss();
+                                                Intent i=new Intent(OtpVerification.this, MainActivity.class);
+                                                //clear all open activity
+                                                i.addFlags(i.FLAG_ACTIVITY_NEW_TASK | i.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(i);
+                                                finish();
+                                                Toast.makeText(getApplicationContext(),"user registered successful"+deviceToken,Toast.LENGTH_LONG).show();
+                                            }
+                                        });
+
 
                                     }
                                     else if(task.getException() instanceof FirebaseAuthUserCollisionException) {
