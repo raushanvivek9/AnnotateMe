@@ -95,7 +95,6 @@ c.	Push Notification: Annotators and Users will get push notification on their A
 ![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/076df1b9-76c8-4c42-a124-7fd3b20dc1a3)
 ![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/716d51c9-1d0a-4e60-8129-dc59a6ab67c1)
 ![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/241990eb-98fe-41b1-991d-7de041ffc815)
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/0993c9ef-c4a4-4ae5-8377-f5e61ad3ae8f)
 ![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/80c49f31-3bc8-4b5e-97ef-25b7a2280d7c)
 ![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/6c11f282-ced9-45d7-aa63-12ac9d6f721e)
 ![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/89d35305-8f78-443f-b5c0-f5c028a29a5c)
@@ -115,7 +114,7 @@ c.	Push Notification: Annotators and Users will get push notification on their A
 ![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/6663d25d-8029-45fc-94a0-e115a54c9062)
 <br>
 <br>
-<h3>Firebase Structure</h3><br>
+Firebase Structure<br>
 <br>
 ![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/61d9c436-f37d-491a-80f3-844f5311180f)
 ![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/dc6d59fa-edfd-463f-b6ba-b9df763815a1)
