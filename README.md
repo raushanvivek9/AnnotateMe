@@ -80,47 +80,54 @@ c.	Push Notification: Annotators and Users will get push notification on their A
 
 #Application Screenshots<br>
 <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/09dec12e-6739-4e98-b3ce-44f79d47a4ea)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/a72aefa0-c39d-4211-986b-691a9fb6e089)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/d1de4c05-6dba-4b99-be33-2094d4c7ac4a)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/f3fa3c14-6681-4d9e-8847-70ad72a2ad06)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/74905b51-53f6-42b7-9f4d-02953db16add)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/847d9ba2-d74b-43eb-b9e2-af495c4d5b3e)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/caa5021b-6499-4c85-b79c-8d91b96cc501)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/b280dcef-77c8-4cab-ab0d-5982de928cfe)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/8dbc1a82-b3bd-46e6-b63d-88bcc84895ae)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/e77c2e25-6ce7-4834-8f81-a84787c30a97)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/69f6bd10-cf4f-49a9-8cd7-1d07123caf1b)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/4254d5c3-9807-42e4-b3bc-e4c4278f95ed)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/1a4e7a1d-7e6a-4706-ad5a-25aed3c0a808)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/076df1b9-76c8-4c42-a124-7fd3b20dc1a3)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/716d51c9-1d0a-4e60-8129-dc59a6ab67c1)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/241990eb-98fe-41b1-991d-7de041ffc815)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/0993c9ef-c4a4-4ae5-8377-f5e61ad3ae8f)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/80c49f31-3bc8-4b5e-97ef-25b7a2280d7c)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/6c11f282-ced9-45d7-aa63-12ac9d6f721e)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/89d35305-8f78-443f-b5c0-f5c028a29a5c)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/d72b15fe-9cc9-4305-8102-5d454a0362ed)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/2202a736-589c-4eb7-b523-3a9b125219a8)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/57607f8a-f34f-4d7b-bc09-1c8d4847d921)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/7be53b59-6bcf-4c3c-8d24-820a4a297a61)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/0a0ad58a-e53f-4b70-a54e-6ee997931645)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/6292ef10-ffc0-4a9d-92b2-5cacd3a5538d)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/e2d5895e-e3d4-42d0-abde-6e797622e2be)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/605f3f54-772c-45eb-aa61-f408178ff429)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/0bc3b171-6762-41c6-a525-468a4b205afc)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/a371c051-ceab-4e08-ac02-2f925c40b6fe)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/6335d4b5-56c8-4a1d-8b68-46124477dcbd)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/2b898831-b475-40b7-b7c7-e6d58b7cd882)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/3b71d5f3-6063-4bcb-b5db-6781f9c36c92)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/6663d25d-8029-45fc-94a0-e115a54c9062)
+<br>
+<br>
+<h3>Firebase Structure</h3><br>
+<br>
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/61d9c436-f37d-491a-80f3-844f5311180f)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/dc6d59fa-edfd-463f-b6ba-b9df763815a1)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/f83333f8-7d3c-4fe4-9b94-53983700b1d5)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/57b4b9bf-97f0-4b3c-959d-05b9d24df86c)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/dfccef25-c84c-411c-9ae6-1889838ea18e)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/1c985ac8-fbf0-4e09-b199-7189249dba50)
+![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/fa03c644-ea5a-4d3e-aa6a-e4089ffc1748)
 
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/b8941f80-8fe9-4302-b54d-b3f7de8291ad) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/edb1ba3a-2a52-40ed-a7c2-39cb6cd6df82) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/faeb80e3-7257-4ee5-8d4a-d0e44540515b) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/42e2116b-ec89-4a22-bde3-15ec710d1ec7) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/90cbb11f-edad-45a6-8543-7c18842adeb5) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/74b7382d-5e56-45fd-b977-3c20c40f580d) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/7d1992db-d2cc-409f-9d34-0ee50d17be81) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/574ef5d9-3e34-4cac-a361-e4cf5a8f8bae) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/c5630a21-7630-4de4-bdac-3a7ecea4df52) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/2010693b-0f24-4aad-a74f-e9c08f4d402f) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/85d2850a-34ef-40d0-91d5-5731f37bc54b) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/ce53e9dd-3c40-4559-a9ef-b06eda714ad8) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/fe489563-0618-4986-9490-2f0f4c583ccc) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/88ac7289-8518-49d5-bd85-a62531bcb111) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/4f924bce-28fc-4b4d-84f7-b7f01cedcb8d) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/64d780db-b826-416e-9e28-5eda55eb5da2) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/ed3709c5-fb54-4209-8722-e94540eb8598) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/2033e2ed-0849-48ab-aa06-0ea14275ba83) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/368a920f-2ac0-40e3-9822-23e263a0b627) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/c227a136-c2f3-4be2-bf3d-5a3fd1da0216) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/e076d503-6b3d-4b73-a432-25c00b2dbe66) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/176a4ed8-1c02-4d1a-9518-556930524b34) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/b1db6db8-3d28-4d5b-8fdb-6c59ddd93804) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/27e54b96-d84e-461e-aaa8-533e2ef67c11) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/07675b38-d7da-4ee6-b73c-d0fe186a9dbd) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/ec971cbc-9b45-47f9-abf1-25b6c6b62b40) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/cae70f62-2fc7-4e3f-abcd-e17e75560ff3) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/6386bf1c-b68b-4916-8047-8473f0e469e0) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/f64f76a2-a059-4ef3-96f4-42518c6bc987) <br>
-<br>
-#Firebase Structure<br>
-<br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/1b2e7bcf-a527-4ea9-9fa1-4c1aa5777029) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/d3ab253c-91b2-4151-bee0-aba7ce130cf7) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/2cc9ddfe-6fcf-452e-ac7d-57546f27e8ec) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/1f97ea1e-7282-4c80-b685-0f4fc6b5c9ab) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/9b66b0a1-e0ec-4727-a08f-ad8a246e4376) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/3a6d61f5-b23e-40ca-a278-0130a54fb341) <br>
-![image](https://github.com/raushanvivek9/AnnotateMe/assets/49828254/5961b25c-3d8a-4d92-b35b-25465a2fdb16) <br>
+
+
+
 
 
 
